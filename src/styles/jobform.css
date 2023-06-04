@@ -38,8 +38,12 @@ input {
 
 #title,
 #url,
+#company {
+  width: 20vw;
+}
+
 #quantity {
-  width: 25vw;
+  width: 9vw;
 }
 
 input::placeholder {

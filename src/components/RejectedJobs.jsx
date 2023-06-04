@@ -19,6 +19,7 @@ const RejectedJobs = (props) => {
           <div key={singleJob.id} className="job-container">
             <div className="job-content">
               <h1 id="job-header">{singleJob.title}</h1>
+              <h2 id="job-company_title">{singleJob.company}</h2>
               <a href={singleJob.url} id="job-url">
                 {getWebsiteName(singleJob.url)}
               </a>

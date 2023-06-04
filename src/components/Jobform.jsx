@@ -8,6 +8,7 @@ import Modal from "./Modal";
 const Jobform = ({ onAddJob }) => {
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
+  const [company, setCompany] = useState("");
   const [rating, setRating] = useState("");
   const [modal, setModal] = useState(false);
 
@@ -20,6 +21,8 @@ const Jobform = ({ onAddJob }) => {
       title.trim() === 0 ||
       !url ||
       url.trim() === 0 ||
+      !company ||
+      company.trim() === 0 ||
       !rating ||
       rating === null ||
       isNaN(rating)
@@ -32,6 +35,7 @@ const Jobform = ({ onAddJob }) => {
     const submittedJob = {
       id: uuidv4(),
       title,
+      company,
       url,
       rating,
       status: "saved",
@@ -44,6 +48,7 @@ const Jobform = ({ onAddJob }) => {
     setTitle("");
     setUrl("");
     setRating("");
+    setCompany("");
 
     closeModalHandler();
   };
@@ -58,6 +63,10 @@ const Jobform = ({ onAddJob }) => {
 
   const inputRatingHandler = (event) => {
     setRating(event.target.value);
+  };
+
+  const inputCompanyHandler = (event) => {
+    setCompany(event.target.value);
   };
 
   const openModalHandler = (event) => {
@@ -88,6 +97,15 @@ const Jobform = ({ onAddJob }) => {
             value={url}
             placeholder="Link to Website"
             onChange={inputUrlHandler}
+          ></input>
+        </div>
+        <div className="input-company">
+          <input
+            type="text"
+            id="company"
+            value={company}
+            placeholder="Name of the company"
+            onChange={inputCompanyHandler}
           ></input>
         </div>
         <div className="input-quantity">
