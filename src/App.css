@@ -1,0 +1,15 @@
+.job-splitter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  margin: 1rem;
+}
+
+@media screen and (max-width: 767px) {
+  .job-splitter {
+    flex-direction: column;
+    margin: 0;
+  }
+}

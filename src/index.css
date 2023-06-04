@@ -1,0 +1,16 @@
+@font-face {
+  font-family: Author;
+  src: url("./fonts/Author-Variable.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Author;
+}
+
+body {
+  color: #0f0f0f;
+  background: #f7f7f7;
+}
