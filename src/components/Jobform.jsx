@@ -1,7 +1,6 @@
 import "../styles/jobform.css";
 
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import Modal from "./Modal";
 
 // eslint-disable-next-line react/prop-types
@@ -12,7 +11,7 @@ const Jobform = ({ onAddJob }) => {
   const [rating, setRating] = useState("");
   const [modal, setModal] = useState(false);
 
-  const addJobHandler = (event) => {
+  const addJobHandler = async (event) => {
     event.preventDefault();
     setModal(false);
 
@@ -33,7 +32,6 @@ const Jobform = ({ onAddJob }) => {
     setModal(true);
 
     const submittedJob = {
-      id: uuidv4(),
       title,
       company,
       url,
@@ -41,16 +39,16 @@ const Jobform = ({ onAddJob }) => {
       status: "saved",
     };
 
-    console.log(submittedJob);
-
-    onAddJob(submittedJob);
-
-    setTitle("");
-    setUrl("");
-    setRating("");
-    setCompany("");
-
-    closeModalHandler();
+    try {
+      await onAddJob(submittedJob);
+      setTitle("");
+      setUrl("");
+      setRating("");
+      setCompany("");
+      closeModalHandler();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const inputTitleHandler = (event) => {

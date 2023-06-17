@@ -5,8 +5,8 @@
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(2px); /* Apply blur effect */
+  background-color: rgba(126, 126, 126, 0.5);
+  backdrop-filter: blur(5px); /* Apply blur effect */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,10 +14,10 @@
 
 .modal-content {
   background-color: #f7f7f7;
-  padding: 2rem;
+  padding: 4rem;
 
   width: max-content;
-  border-radius: 4px;
+  border-radius: 12px;
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   max-width: max-content;
   text-align: center;
@@ -27,28 +27,30 @@
 }
 
 #modal-header {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 #modal-title,
 #modal-url,
 #modal-rating {
-  font-size: 1rem;
-  margin: 0.5rem 0;
-  font-weight: 300;
+  font-size: 1.15rem;
+  margin: 1rem 0;
+  font-weight: 400;
 }
 
 #modal-submit,
 #modal-cancel {
-  margin-top: 10px;
-  padding: 10px 20px;
+  margin-top: 12px;
+  padding: 15px 0px;
   background-color: #ffff;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   color: #0f0f0f;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   cursor: pointer;
 }
 
@@ -58,7 +60,7 @@
 
 #modal-submit:hover,
 #modal-cancel:hover {
-  background-color: #f7f7f7;
+  background-color: #ffffff54;
 }
 
 #modal-submit:focus,
@@ -68,15 +70,28 @@
 
 #modal-url {
   width: fit-content;
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 @media screen and (max-width: 767px) {
   .modal-overlay {
-    width: 90%;
+    width: 100%;
   }
   .modal-content {
-    width: 70%;
-    margin: 0 2rem;
+    width: 100%;
+    margin: 0 5rem;
+  }
+
+  #modal-header {
+    font-size: 1.25rem;
+    width: 100%;
+    margin: 0.75rem 0;
+  }
+
+  #modal-title,
+  #modal-url,
+  #modal-rating {
+    font-size: 0.85rem;
+    margin: 0.5rem;
   }
 }

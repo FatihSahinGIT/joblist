@@ -1,22 +1,58 @@
-import "../styles/joblist.css";
-
 /* eslint-disable react/prop-types */
+import "../styles/joblist.css";
+import { useEffect, useState } from "react";
+
 const RejectedJobs = (props) => {
+  const [rejected, setRejected] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const getWebsiteName = (url) => {
     const parsedUrl = new URL(url);
     return parsedUrl.hostname;
+  };
+
+  useEffect(() => {
+    setLoading(true);
+    fetchData();
+
+    const interval = setInterval(fetchData, 120000); // Check for updates every 5 seconds
+
+    return () => {
+      clearInterval(interval); // Clean up the interval when the component is unmounted
+    };
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/rjobs");
+      const responseData = await response.json();
+
+      if (Array.isArray(responseData.rejectedJobs)) {
+        setRejected(responseData.rejectedJobs);
+      } else {
+        console.log("Fetched rejected jobs is not an array:", responseData);
+      }
+
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const clearJob = (id) => {
     props.onClearJob(id);
   };
 
+  if (loading) {
+    return <div>Loading...</div>; // Display a loading indicator while data is being fetched
+  }
+
   return (
     <div className="job-wrapper">
       <h3 id="job-wrapper_header">Rejected Jobs</h3>
-      {props.rejectedJobs.map((singleJob) => {
+      {rejected.map((singleJob) => {
         return (
-          <div key={singleJob.id} className="job-container">
+          <div key={singleJob._id} className="job-container">
             <div className="job-content">
               <h1 id="job-header">{singleJob.title}</h1>
               <h2 id="job-company_title">{singleJob.company}</h2>

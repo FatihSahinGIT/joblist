@@ -5,7 +5,6 @@ import DeleteModal from "./DeleteModal";
 
 /* eslint-disable react/prop-types */
 const Joblist = (props) => {
-  console.log(props);
   const [deleteModal, setDeleteModal] = useState(false);
   const [deletedJobId, setDeletedJobId] = useState(null);
 
@@ -24,8 +23,20 @@ const Joblist = (props) => {
   };
 
   const getWebsiteName = (url) => {
-    const parsedUrl = new URL(url);
-    return parsedUrl.hostname;
+    setTimeout(() => {
+      let websiteName = "";
+
+      try {
+        if (url) {
+          const parsedUrl = new URL(url);
+          websiteName = parsedUrl.hostname;
+        }
+      } catch (error) {
+        console.log("Invalid URL:", url);
+      }
+
+      return websiteName;
+    }, 2000);
   };
 
   const rejectedHandler = (job) => {
@@ -37,7 +48,7 @@ const Joblist = (props) => {
       <h3 id="job-wrapper_header">Interesting Offers</h3>
       {props.jobs.map((singleJob) => {
         return (
-          <div key={singleJob.id} className="job-container">
+          <div key={singleJob._id} className="job-container">
             <div className="job-content">
               <h1 id="job-header">{singleJob.title}</h1>
               <h2 id="job-company_title">{singleJob.company}</h2>
@@ -56,7 +67,7 @@ const Joblist = (props) => {
                 rejected
               </button>
               <button
-                onClick={() => deleteJobHandler(singleJob.id)}
+                onClick={() => deleteJobHandler(singleJob._id)}
                 id="job-delete_btn"
               >
                 delete
