@@ -13,7 +13,7 @@ function App() {
 
   const handleAddJob = async (job) => {
     try {
-      const response = await fetch("http://localhost:3000/jobs", {
+      const response = await fetch("https://joblist-backend.onrender.com/jobs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +36,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:3000/jobs");
+      const response = await fetch("https://joblist-backend.onrender.com/jobs");
       const fetchedJobs = await response.json();
 
       if (Array.isArray(fetchedJobs.jobs)) {
@@ -62,7 +62,7 @@ function App() {
 
   const handleDeleteJob = async (jobId) => {
     try {
-      const response = await fetch(`http://localhost:3000/jobs/${jobId}`, {
+      const response = await fetch(`https://joblist-backend.onrender.com/jobs/${jobId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -91,7 +91,7 @@ function App() {
     const rejectedJob = { ...job, status: "rejected" };
 
     try {
-      const response = await fetch(`http://localhost:3000/jobs/${job._id}`, {
+      const response = await fetch(`https://joblist-backend.onrender.com/jobs/${job._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

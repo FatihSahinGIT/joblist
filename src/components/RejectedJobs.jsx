@@ -24,7 +24,7 @@ const RejectedJobs = (props) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:3000/rjobs");
+      const response = await fetch("https://joblist-backend.onrender.com/rjobs");
       const responseData = await response.json();
 
       if (Array.isArray(responseData.rejectedJobs)) {
