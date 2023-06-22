@@ -52,8 +52,13 @@ const Joblist = (props) => {
             <div className="job-content">
               <h1 id="job-header">{singleJob.title}</h1>
               <h2 id="job-company_title">{singleJob.company}</h2>
-              <a href={singleJob.url} id="job-url">
-                {getWebsiteName(singleJob.url)}
+              <a
+                href={singleJob.url}
+                id="job-url"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {getWebsiteName(singleJob.url)} link
               </a>
               <h4 id="job-rating">{singleJob.rating} / 5</h4>
               <span id="job-status">{singleJob.status}</span>
